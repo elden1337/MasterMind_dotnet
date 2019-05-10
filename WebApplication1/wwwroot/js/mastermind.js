@@ -114,18 +114,26 @@ function ShowGuessCommit() {
     })
     if (check == 4) {
         $(function () {
-            $('#attempt_submit_' + attempt).show();
-        })
-
-        $("#attempt_submit_" + attempt).click(function () {
             $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
                 guessArray.push($(this).data('choice'));
             })
 
-            $('#attempt_submit_' + attempt).hide();
+            //$('#attempt_submit_' + attempt).hide();
 
             Guess(guessArray);
-        });
+
+            //$('#attempt_submit_' + attempt).show();
+        })
+
+        //$("#attempt_submit_" + attempt).click(function () {
+        //    $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
+        //        guessArray.push($(this).data('choice'));
+        //    })
+
+        //    $('#attempt_submit_' + attempt).hide();
+
+        //    Guess(guessArray);
+        //});
     }
 }
 
