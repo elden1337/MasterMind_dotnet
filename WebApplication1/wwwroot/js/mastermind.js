@@ -16,30 +16,30 @@ $(document).ready(function () {
     MaskNonAvailableAnswers();
     LoadPins();
 
-    $(document).on('mousedown', '.draggable', function () {
-        if (!$(this).data('isMoved')) {
-            offset = $(this).offset();
-            $(this).css("left", offset.left);
-            $(this).css("top", offset.top);
-        }
+    $(document).on('dragstop', '.draggable', function (event, ui) {
+        offset = $(this).offset();
+        var newLeft = ui.offset.left;
+        var newTop = ui.offset.top;
+
+        $(this).prependTo($("#pingraveyeard"));
+        $(this).css("position", "absolute");
+        $(this).css("left", newLeft);
+        $(this).css("top", newTop);
+
+        $("#pingraveyard").draggable({ snap: ".droppable_area", snapMode: "inner" });
+        LoadPins();
     });
 
-    //THIS MAKES IT NOT BIND TO THE DROPABLE AREA. FIX THAT!
-    $(document).on('dragstart', '.draggable', function () {
-        console.log('moved');
-        if (!$(this).data('isMoved')) {
-
-            $(this).css("position", "absolute");
-            $(".draggable").draggable({ snap: ".guess", snapMode: "inner" });
-            $(this).prependTo($("#pingraveyeard"));
-            $("#pingraveyard").draggable({ snap: ".guess", snapMode: "inner" });
-
-            LoadPins();
-            $(this).data('isMoved', true);
-        }
+    $('.droppable_area').each(function() {
+        MakeDroppable($(this));
     });
 
-    $(".guess").droppable({
+});
+
+function MakeDroppable(element) {
+    element.addClass("droppable_area");
+    element.addClass("ui-droppable");
+    element.droppable({
         drop: function (event, ui) {
             var item = ui.draggable;
             $(this).data('choice', item.attr('data-name'));
@@ -48,7 +48,7 @@ $(document).ready(function () {
             ShowGuessCommit();
         }
     });
-});
+}
 
 function MaskNonAvailableAnswers() {
     $('.guessgroup--item').each(function () {
@@ -58,6 +58,22 @@ function MaskNonAvailableAnswers() {
         if (parseInt(row) > attempt) {
             $(this).css("opacity", "0.2");
         }
+        if (parseInt(row) === attempt) {
+            $('div.guess.round', $('#attempt_guessgroup_' + attempt)).each(function () {
+                if (parseInt(row) === attempt) {
+                    MakeDroppable($(this));
+                    //$(this).addClass('droppable_area');
+                    //$(this).addClass('ui-droppable');
+                    $(".draggable").draggable({ snap: ".droppable_area", snapMode: "inner" });
+                }
+                else {
+                    $(this).removeClass('droppable_area');
+                    $(this).removeClass('ui-droppable');
+                    $(".draggable").draggable({ snap: ".droppable_area", snapMode: "inner" });
+                }
+            })
+        }
+        
     });
     return;
 }
@@ -68,7 +84,7 @@ function LoadPins() {
         $('#choice--group').append('<div class="choice round ' + numberToColor[i] + ' draggable ui-draggable ui-draggable-handle" data-name="' + numberToColor[i] + '" style="position: relative;"></div>');
     }
 
-    $(".draggable").draggable({ snap: ".guess", snapMode: "inner" });
+    $(".draggable").draggable({ snap: ".droppable_area", snapMode: "inner" });
 
     return;
 }
@@ -90,9 +106,10 @@ function CreateAnswer() {
 function ShowGuessCommit() {
     var check = 0;
 
-    $('div.guess.round', $('#attempt_guessgroup_' + attempt)).each(function () {
+    $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
         if ($(this).data('isSet')) {
             check++;
+            console.log(check);
         }
     })
     if (check == 4) {
@@ -101,7 +118,7 @@ function ShowGuessCommit() {
         })
 
         $("#attempt_submit_" + attempt).click(function () {
-            $('div.guess.round', $('#attempt_guessgroup_' + attempt)).each(function () {
+            $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
                 guessArray.push($(this).data('choice'));
             })
 
