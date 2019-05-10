@@ -3,7 +3,7 @@
 
 :root {
     --bg-color: #7b3d2e;
-    --hole-color: #5a291c;
+    --hole-color: #643022;
     --accent-color: #693224;
     --item-margin: 3px;
     font-family: 'Open Sans', sans-serif;
@@ -18,10 +18,15 @@
 
 .red {
     background-color: red;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(red));
+    background-image: -webkit-linear-gradient(top, red, red);
+    background-image: -moz-linear-gradient(top, red, red);
+    /*box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;*/
 }
 
 .green {
     background-color: green;
+    border: 1px solid darkgreen;
 }
 
 .black {
@@ -30,14 +35,17 @@
 
 .white {
     background-color: white;
+    border: 1px solid #ccc;
 }
 
 .yellow {
     background-color: yellow;
+    border: 1px solid #CCCC00;
 }
 
 .blue {
     background-color: blue;
+    border: 1px solid darkblue;
 }
 
 .round {
@@ -53,7 +61,7 @@
     padding-top:20px;
     padding-bottom:30px;
     padding-left:40px;
-    margin-bottom:30px;
+    margin-bottom:15px;
 }
 
 .row {
@@ -99,12 +107,13 @@
 }
 
 .guess--group {
-
+    width:60%
 }
 
 .guessgroup--item {
     display: flex;
     flex-wrap:nowrap;
+    justify-content:space-between;
     padding: 5px;
     box-sizing: border-box;
 }
@@ -118,8 +127,8 @@
 }
 
 .guess {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: var(--hole-color);
     border-radius: 50%;
     border: 3px solid var(--accent-color);
@@ -129,22 +138,20 @@
 
 .choice--group {
     display:flex;
-    margin-left:auto;
-    margin-right:auto;
+    justify-content: space-around;
 }
- 
+
 .choice {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin: var(--item-margin);
-    border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 .hint--group {
     display:block;
     width:35px;
-    margin-top:7px;
+    margin-top:13px;
 }
 
 .hint--row {
@@ -188,10 +195,10 @@
 }
 
 .answerhider {
-    left:35px;
-    top:10px;
+    left:65px;
+    top:11px;
     position:absolute;
-    width: 50%;
+    width: 55%;
     display: inline-block;
     padding: .5em;
     perspective: 50em;
@@ -199,17 +206,17 @@
 
 .answerhider--child {
     margin: 3px;
-    padding-top:12px;
-    font-size:22px;
-    box-sizing:border-box;
+    padding-top: 12px;
+    font-size: 22px;
+    box-sizing: border-box;
     width: 100%;
-    text-align:center;
-    letter-spacing:1px;
-    font-weight:bold;
-    color:var(--hole-color);
-    border:1px solid var(--accent-color);
-    height: 55px;
-    background-color:var(--bg-color);
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: var(--hole-color);
+    border: 1px solid var(--accent-color);
+    height: 65px;
+    background-color: var(--bg-color);
     display: inline-block;
     text-transform: uppercase;
     transform: rotateX(50deg);
