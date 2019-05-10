@@ -58,20 +58,12 @@
     background-color:var(--bg-color);
     border-radius:6px;
     width:100%;
-    /*padding-top:20px;
-    padding-bottom:30px;
-    padding-left:40px;*/
-    margin-bottom:15px;
+    margin-bottom:5px;
 }
 
 .inner-border {
-    padding-top:20px;
-    padding-bottom:30px;
-    padding-left:25px;
-    padding-right:25px;
-    /*padding: 20px;*/
-    margin: 20px;
-    margin-bottom:15px;
+    padding:5px 25px 15px 25px;
+    margin:10px 20px 15px 20px;
     border-radius:6px;
     border: 1px solid var(--accent-color);
     box-sizing: border-box;
@@ -139,8 +131,8 @@
 }
 
 .guess {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: var(--hole-color);
     border-radius: 50%;
     border: 3px solid var(--accent-color);
@@ -191,7 +183,7 @@
     height:20px;
     position:relative;
     top:16px;
-    left:30px;
+    left:10px;
 }
 
 
@@ -215,7 +207,7 @@
 
 .answerhider {
     left:93px;
-    top:33px;
+    top:5px;
     position:absolute;
     width: 55%;
     display: inline-block;
@@ -249,12 +241,12 @@
 /*iphone 5, se*/
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-device-pixel-ratio : 2) {
     .hint--group {
-        padding: 2px;
+        padding: 1px;
     }
 
     .guess, .choice {
-        width: 28px;
-        height: 28px;
+        width: 26px;
+        height: 26px;
     }
 
     .board {
@@ -263,7 +255,7 @@
     }
 
     .answerhider {
-        top: 11px;
+        top: -3px;
         left:71px;
     }
 
@@ -284,8 +276,8 @@
     }
 
     .guess, .choice {
-        width: 33px;
-        height: 33px;
+        width: 30px;
+        height: 30px;
     }
 
     .board {
@@ -293,7 +285,7 @@
     }
 
     .answerhider {
-        top: 16px;
+        top: 0;
         left:82px;
     }
 
