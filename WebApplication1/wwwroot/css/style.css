@@ -56,12 +56,25 @@
 
 .board {
     background-color:var(--bg-color);
-    border-radius:4px;
+    border-radius:6px;
     width:100%;
+    /*padding-top:20px;
+    padding-bottom:30px;
+    padding-left:40px;*/
+    margin-bottom:15px;
+}
+
+.inner-border {
     padding-top:20px;
     padding-bottom:30px;
-    padding-left:40px;
+    padding-left:25px;
+    padding-right:25px;
+    /*padding: 20px;*/
+    margin: 20px;
     margin-bottom:15px;
+    border-radius:6px;
+    border: 1px solid var(--accent-color);
+    box-sizing: border-box;
 }
 
 .row {
@@ -74,10 +87,9 @@
     align-content: center;
 }
 
-.ornament {
+/*.ornament {
     border: 5px solid var(--accent-color);
     box-sizing: border-box;
-    /*box-shadow: 0 0 5px rgba(0,0,0,.25) inset, 0 0 5px white inset;*/
 }
 
 .ornament__round {
@@ -104,10 +116,10 @@
     background-color:red;
     position:absolute;
     content:"";
-}
+}*/
 
 .guess--group {
-    width:60%
+    width:75%;
 }
 
 .guessgroup--item {
@@ -149,13 +161,17 @@
 }
 
 .hint--group {
-    display:block;
-    width:35px;
-    margin-top:13px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border:1px solid var(--accent-color);
+    padding:10px;
+    border-radius:1px;
 }
 
 .hint--row {
     display:flex;
+    justify-content:center;
 }
 
 .hint {
@@ -174,9 +190,11 @@
     width:20px;
     height:20px;
     position:relative;
-    top:13px;
-    left:10px;
+    top:16px;
+    left:30px;
 }
+
+
 
 .win, .gameover {
     display: none;
@@ -191,12 +209,13 @@
     padding-top: 50%;
     box-sizing: border-box;
     font-size: 24px;
-    opacity: 0.7;
+    opacity: 0.5;
+    font-weight: bold;
 }
 
 .answerhider {
-    left:65px;
-    top:11px;
+    left:93px;
+    top:33px;
     position:absolute;
     width: 55%;
     display: inline-block;
@@ -220,4 +239,67 @@
     display: inline-block;
     text-transform: uppercase;
     transform: rotateX(50deg);
+}
+
+.noborder {
+    border:0 !important;
+}
+
+/* SMALL IPHONES */
+/*iphone 5, se*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-device-pixel-ratio : 2) {
+    .hint--group {
+        padding: 2px;
+    }
+
+    .guess, .choice {
+        width: 28px;
+        height: 28px;
+    }
+
+    .board {
+        margin-bottom: 1px;
+        padding-bottom: 5px;
+    }
+
+    .answerhider {
+        top: 11px;
+        left:71px;
+    }
+
+    .inner-border {
+        padding-bottom: 5px;
+        margin: 10px;
+    }
+
+    .guessgroup--item {
+        padding:4px;
+    }
+}
+
+/* iphone 6,7,8 */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-device-pixel-ratio : 2) {
+    .hint--group {
+        padding: 5px;
+    }
+
+    .guess, .choice {
+        width: 33px;
+        height: 33px;
+    }
+
+    .board {
+        margin-bottom: 5px;
+    }
+
+    .answerhider {
+        top: 16px;
+        left:82px;
+    }
+
+    .inner-border {
+        padding-bottom:10px;
+        margin:10px;
+    }
+
 }

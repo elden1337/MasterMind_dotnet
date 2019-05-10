@@ -169,12 +169,12 @@ function Guess(guessArray) {
     if (win) {
         console.log('user won!');
         $('#win').show();
-        $('#hider').hide();
+        $('#hider').animate({ "left": "-28px", "top": "-27px" }, "fast");
     }
-    else if (attempt == 9) {
+    else if (attempt == 10) {
         console.log('user lost!');
-        $('#lose').show();
-        $('#hider').hide();
+        $('#gameover').show();
+        $('#hider').animate({ "left": "-28px", "top": "-27px" }, "fast");
     }
 
     attempt++;
