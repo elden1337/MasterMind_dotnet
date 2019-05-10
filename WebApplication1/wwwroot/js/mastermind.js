@@ -44,7 +44,13 @@ function MakeDroppable(element) {
             var item = ui.draggable;
             $(this).data('choice', item.attr('data-name'));
             $(this).data('isSet', true);
+            console.log('added item');
 
+            ShowGuessCommit();
+        }, 
+        out: function (event, ui) {
+            $(this).data('isSet', false);
+            console.log('removed item');
             ShowGuessCommit();
         }
     });
@@ -109,7 +115,6 @@ function ShowGuessCommit() {
     $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
         if ($(this).data('isSet')) {
             check++;
-            console.log(check);
         }
     })
     if (check == 4) {
@@ -117,11 +122,8 @@ function ShowGuessCommit() {
             $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
                 guessArray.push($(this).data('choice'));
             })
-
             //$('#attempt_submit_' + attempt).hide();
-
             Guess(guessArray);
-
             //$('#attempt_submit_' + attempt).show();
         })
 
@@ -129,9 +131,7 @@ function ShowGuessCommit() {
         //    $('div.guess.round.droppable_area', $('#attempt_guessgroup_' + attempt)).each(function () {
         //        guessArray.push($(this).data('choice'));
         //    })
-
         //    $('#attempt_submit_' + attempt).hide();
-
         //    Guess(guessArray);
         //});
     }
