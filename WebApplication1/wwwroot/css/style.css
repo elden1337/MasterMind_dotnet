@@ -131,8 +131,8 @@
 }
 
 .guess {
-    width: 35px;
-    height: 35px;
+    width: 34px;
+    height: 34px;
     background-color: var(--hole-color);
     border-radius: 50%;
     border: 3px solid var(--accent-color);
@@ -146,16 +146,16 @@
 }
 
 .choice {
-    width: 35px;
-    height: 35px;
+    width: 34px;
+    height: 34px;
     margin: var(--item-margin);
     box-sizing: border-box;
 }
 
 .hint--group {
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border:1px solid var(--accent-color);
     padding:8px;
     border-radius:1px;
